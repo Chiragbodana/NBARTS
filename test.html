@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lightbox with Swipe</title>
+    <link href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/css/lightgallery-bundle.min.css" rel="stylesheet">
+    <style>
+        #open-gallery {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<button id="open-gallery">Open Image Gallery</button>
+
+<!-- Hidden Gallery -->
+<div id="lightbox-gallery" style="display:none;">
+    <a href="https://picsum.photos/id/1018/1000/600"><img src="https://picsum.photos/id/1018/250/150" alt=""></a>
+    <a href="https://picsum.photos/id/1015/1000/600"><img src="https://picsum.photos/id/1015/250/150" alt=""></a>
+    <a href="https://picsum.photos/id/1019/1000/600"><img src="https://picsum.photos/id/1019/250/150" alt=""></a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/lightgallery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/plugins/zoom/lg-zoom.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/plugins/thumbnail/lg-thumbnail.min.js"></script>
+
+<script>
+    const galleryElement = document.getElementById('lightbox-gallery');
+
+    // Initialize gallery
+    const lightGalleryInstance = lightGallery(galleryElement, {
+        plugins: [lgZoom, lgThumbnail],
+        licenseKey: '0000-0000-000-0000', // Free license key
+        speed: 500,
+        swipeThreshold: 50,
+        download: false
+    });
+
+    document.getElementById('open-gallery').addEventListener('click', function () {
+        lightGalleryInstance.openGallery(0); // Open first image
+    });
+</script>
+
+</body>
+</html>
